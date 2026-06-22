@@ -1,0 +1,186 @@
+.purchase {
+    padding: 90px 90px 120px;
+}
+
+.purchase__content {
+    display: flex;
+    justify-content: space-between;
+    gap: 80px;
+}
+
+.purchase__left {
+    width: 60%;
+}
+
+.purchase__right {
+    width: 32%;
+}
+
+.purchase-item {
+    display: flex;
+    gap: 50px;
+    padding-bottom: 60px;
+    border-bottom: 1px solid #000;
+}
+
+.purchase-item__image {
+    width: 180px;
+    height: 180px;
+    background: #d9d9d9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.purchase-item__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.purchase-item__detail {
+    padding-top: 5px;
+}
+
+.purchase-item__name {
+    margin: 0 0 25px;
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.purchase-item__price {
+    margin: 0;
+    font-size: 32px;
+}
+
+.purchase-section {
+    padding: 35px 40px 60px;
+    border-bottom: 1px solid #000;
+}
+
+.purchase-section__title {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* 支払い方法 */
+
+.purchase-section__select-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-left: 70px;
+    margin-top: 25px;
+}
+
+.purchase-section__select {
+    width: 280px;
+    height: 40px;
+
+    padding: 0 40px 0 10px;
+
+    border: 1px solid #5f5f5f;
+    border-radius: 4px;
+
+    background-color: #fff;
+    color: #5f5f5f;
+
+    font-size: 16px;
+    font-weight: bold;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    cursor: pointer;
+}
+
+.purchase-section__select-wrapper::after {
+    content: "";
+
+    position: absolute;
+    right: 12px;
+    top: 50%;
+
+    transform: translateY(-50%);
+
+    width: 0;
+    height: 0;
+
+    border-left: 6px solid transparent;
+    border-right: 6px solid transparent;
+    border-top: 8px solid #000;
+
+    pointer-events: none;
+}
+
+/* 配送先 */
+
+.purchase-section__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.purchase-section__link {
+    color: #0073cc;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+.purchase-address {
+    margin-left: 70px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.purchase-address__postal,
+.purchase-address__address,
+.purchase-address__building {
+    margin: 0 0 10px;
+}
+
+/* 右側 */
+
+.purchase-summary {
+    border: 1px solid #000;
+}
+
+.purchase-summary__row {
+    min-height: 120px;
+    padding: 0 50px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 1px solid #000;
+
+    font-size: 24px;
+}
+
+.purchase-summary__row:last-child {
+    border-bottom: none;
+}
+
+.purchase-summary__button {
+    width: 100%;
+    height: 60px;
+
+    margin-top: 70px;
+
+    border: none;
+    border-radius: 5px;
+
+    background: #ff5555;
+    color: #fff;
+
+    font-size: 28px;
+    font-weight: bold;
+
+    cursor: pointer;
+}
+
+.purchase-summary__button:hover {
+    opacity: 0.9;
+}
