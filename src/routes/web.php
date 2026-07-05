@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ItemController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PurchaseController;
@@ -13,22 +14,45 @@ Route::get('/', [ItemController::class, 'index']);
 Route::get('/item/{item_id}', [ItemController::class, 'show']);
 
 Route::middleware('auth')->group(function () {
-    Route::get('/purchase/{item_id}', [PurchaseController::class, 'index']);
-    Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
+    Route::get('/email/verify', function () {
+        return view('auth.verify-email');
+    })->name('verification.notice');
 
-    Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress']);
-    Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress']);
-    Route::get('/purchase/success/{item_id}', [PurchaseController::class, 'success']);
+    Route::post('/email/verification-notification', function (Request $request) {
+        $request->user()->sendEmailVerificationNotification();
 
-    Route::get('/sell', [ItemController::class, 'create']);
-    Route::post('/sell', [ItemController::class, 'store']);
+        return back()->with('status', 'verification-link-sent');
+    })->middleware('throttle:6,1')->name('verification.send');
 
-    Route::get('/mypage', [MypageController::class, 'index']);
+        Route::middleware('verified')->group(function () {
 
-    Route::get('/mypage/profile', [ProfileController::class, 'edit']);
-    Route::patch('/mypage/profile', [ProfileController::class, 'update']);
+            Route::get('/home', function () {
+                $profileExists = \App\Models\Profile::where('user_id', Auth::id())->exists();
 
-    Route::post('/item/{item_id}/like', [LikeController::class, 'toggle']);
+                if (!$profileExists) {
+                    return redirect('/mypage/profile');
+                }
 
-    Route::post('/item/{item_id}/comment', [CommentController::class, 'store']);
+                return redirect('/');
+            })->name('home');
+
+            Route::get('/purchase/{item_id}', [PurchaseController::class, 'index']);
+            Route::post('/purchase/{item_id}', [PurchaseController::class, 'store']);
+
+            Route::get('/purchase/address/{item_id}', [PurchaseController::class, 'editAddress']);
+            Route::post('/purchase/address/{item_id}', [PurchaseController::class, 'updateAddress']);
+            Route::get('/purchase/success/{item_id}', [PurchaseController::class, 'success']);
+
+            Route::get('/sell', [ItemController::class, 'create']);
+            Route::post('/sell', [ItemController::class, 'store']);
+
+            Route::get('/mypage', [MypageController::class, 'index']);
+
+            Route::get('/mypage/profile', [ProfileController::class, 'edit']);
+            Route::patch('/mypage/profile', [ProfileController::class, 'update']);
+
+            Route::post('/item/{item_id}/like', [LikeController::class, 'toggle']);
+
+            Route::post('/item/{item_id}/comment', [CommentController::class, 'store']);
+        });
 });

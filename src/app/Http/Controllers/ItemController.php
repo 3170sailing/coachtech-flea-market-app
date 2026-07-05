@@ -30,6 +30,9 @@ class ItemController extends Controller
             }
         } else {
             $items = Item::with(['order', 'likes'])
+                ->when(Auth::check(), function ($query) {
+                    $query->where('user_id', '!=', Auth::id());
+                })
                 ->when($keyword, function ($query, $keyword) {
                     $query->where('name', 'like', '%' . $keyword . '%');
                 })

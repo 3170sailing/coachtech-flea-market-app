@@ -168,6 +168,94 @@ CVC：任意の3桁
 
 ---
 
+## PHPUnitテスト
+
+本アプリでは、PHPUnitを用いて各機能のFeatureテストを実装しています。
+
+### テスト実行方法
+
+1. PHPコンテナへログイン
+
+```bash
+
+docker compose exec php bash
+
+```
+
+2. .env.testingを作成
+
+```bash
+
+cp .env .env.testing
+
+```
+
+3. .env.testing のデータベース設定をテスト用に変更
+
+```env
+
+APP_ENV=testing
+DB_CONNECTION=mysql
+DB_HOST=mysql
+DB_PORT=3306
+DB_DATABASE=laravel_test
+DB_USERNAME=laravel_user
+DB_PASSWORD=laravel_pass
+
+```
+
+4. MySQLコンテナへログイン
+
+```bash
+
+docker compose exec mysql bash
+
+```
+
+5. MySQLへ接続
+
+```bash
+
+mysql -u root -p
+
+```
+
+6. テスト用データベースを作成
+
+```sql
+
+CREATE DATABASE laravel_test;
+EXIT;
+
+```
+
+7. PHPコンテナ内でテスト用データベースへマイグレーション
+
+```bash
+
+php artisan migrate:fresh --seed --env=testing
+
+```
+
+8. すべてのテストを実行
+
+```bash
+
+php artisan test
+
+```
+
+### テスト結果
+
+```text
+
+Tests: 38 passed
+Time: 0.54s
+
+```
+
+---
+
 ## ER図
 
 ![ER図](ER.png)
