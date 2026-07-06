@@ -165,6 +165,7 @@ CVC：任意の3桁
 * Docker
 * Laravel Fortify
 * Stripe Checkout
+* PHPUnit
 
 ---
 
@@ -286,6 +287,7 @@ http://localhost:8080
 # 機能一覧
 
 * 会員登録
+* メール認証
 * ログイン
 * ログアウト
 * 商品一覧表示
