@@ -66,6 +66,8 @@ DB_USERNAME=laravel_user
 
 DB_PASSWORD=laravel_pass
 
+MAIL_FROM_ADDRESS=test@example.com
+
 ```
 
 8. アプリの暗号化キー（APP_KEY）を生成

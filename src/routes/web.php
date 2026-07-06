@@ -32,8 +32,6 @@ Route::middleware('auth')->group(function () {
                 if (!$profileExists) {
                     return redirect('/mypage/profile');
                 }
-
-                return redirect('/');
             })->name('home');
 
             Route::get('/purchase/{item_id}', [PurchaseController::class, 'index']);

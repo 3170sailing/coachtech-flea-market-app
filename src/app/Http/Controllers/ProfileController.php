@@ -35,6 +35,6 @@ class ProfileController extends Controller
             $profileData
         );
 
-        return redirect('/mypage');
+        return redirect('/');
     }
 }

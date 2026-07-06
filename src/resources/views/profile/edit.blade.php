@@ -55,7 +55,6 @@
                 name="name"
                 id="name"
                 value="{{ old('name', Auth::user()->name) }}"
-                placeholder="既存の値が入力されている">
         </div>
 
         <div class="profile-form__group">
@@ -69,7 +68,6 @@
                 name="postal_code"
                 id="postal_code"
                 value="{{ old('postal_code', optional(Auth::user()->profile)->postal_code) }}"
-                placeholder="既存の値が入力されている">
         </div>
 
         <div class="profile-form__group">
@@ -83,7 +81,6 @@
                 name="address"
                 id="address"
                 value="{{ old('address', optional(Auth::user()->profile)->address) }}"
-                placeholder="既存の値が入力されている">
         </div>
 
         <div class="profile-form__group">
@@ -97,7 +94,6 @@
                 name="building"
                 id="building"
                 value="{{ old('building', optional(Auth::user()->profile)->building) }}"
-                placeholder="既存の値が入力されている">
         </div>
 
         <button
