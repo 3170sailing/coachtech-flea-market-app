@@ -196,12 +196,12 @@ cp .env .env.testing
 ```env
 
 APP_ENV=testing
-DB_CONNECTION=mysql
+DB_CONNECTION=mysql_test
 DB_HOST=mysql
 DB_PORT=3306
 DB_DATABASE=laravel_test
-DB_USERNAME=laravel_user
-DB_PASSWORD=laravel_pass
+DB_USERNAME=root
+DB_PASSWORD=root
 
 ```
 
