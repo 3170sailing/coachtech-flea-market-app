@@ -52,7 +52,7 @@ cp .env.example .env
 
 7. 作成された.envのDB接続を変更
 
-```bash
+```env
 
 DB_CONNECTION=mysql
 
