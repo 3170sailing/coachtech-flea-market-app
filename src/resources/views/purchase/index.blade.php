@@ -23,6 +23,9 @@
         @csrf
 
         <input type="hidden" name="payment_method_text" id="payment_method_text">
+        <input type="hidden" name="postal_code" value="{{ $postalCode }}">
+        <input type="hidden" name="address" value="{{ $address }}">
+        <input type="hidden" name="building" value="{{ $building }}">
 
         <div class="purchase__content">
 

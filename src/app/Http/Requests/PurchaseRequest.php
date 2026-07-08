@@ -14,7 +14,9 @@ class PurchaseRequest extends FormRequest
     public function rules()
     {
         return [
-            'payment_method' => ['required', 'in:konbini,card'],
+            'payment_method' => ['required'],
+            'postal_code' => ['required'],
+            'address' => ['required'],
         ];
     }
 
@@ -22,7 +24,8 @@ class PurchaseRequest extends FormRequest
     {
         return [
             'payment_method.required' => '支払い方法を選択してください',
-            'payment_method.in' => '正しい支払い方法を選択してください',
+            'postal_code.required' => '配送先の郵便番号を入力してください',
+            'address.required' => '配送先住所を入力してください',
         ];
     }
 }
