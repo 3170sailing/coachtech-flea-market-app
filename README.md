@@ -165,6 +165,8 @@ CVC：任意の3桁
 * Laravel 8.x
 * MySQL 8.0
 * Docker
+* Nginx
+* phpMyAdmin
 * Laravel Fortify
 * Stripe Checkout
 * PHPUnit
@@ -233,7 +235,7 @@ EXIT;
 
 ```
 
-7. PHPコンテナ内でテスト用データベースへマイグレーション
+7. テスト用データベースへマイグレーション・シーディングを実行
 
 ```bash
 
